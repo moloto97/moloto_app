@@ -1,22 +1,16 @@
 from dash import Dash, html, dcc, callback, Output, Input
-# import dash_bootstrap_components as dbc
-# import dash_bootstrap_components as dbc
 import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
 import sqlalchemy as sa
 
-SERVER_NAME = '5CG2218ZB6\SQL19V'
-DB = 'MITS'
+df = pd.read_table('Read.txt')
+data_dict = df.set_index('Id').to_dict()
+# print(data_dict)
+mits_id = 'KXKZZ' #input("Please enter the study ID here: ") # Test Ids 597320 600982
+# print(f"The Age show is for {mits_id}: ", mits_id)
+# print(data_dict['name']['{mitsid}'.format(mitsid=mits_id)])
 
-engine = sa.create_engine('mssql+pyodbc://{server}/{db}?driver=ODBC Driver 17 for SQL Server'.format(server=SERVER_NAME, db=DB))
-connection = engine.connect()
-df = pd.read_sql('SELECT TOP (5) * FROM VA_2023..VA2023', connection)
-data_dict = df.set_index('Adssid').to_dict()
-print(data_dict)
-mits_id = 682739 #input("Please enter the study ID here: ") # Test Ids 597320 600982
-print(f"The Age show is for {mits_id}: ", mits_id)
-print(data_dict['name']['{mitsid}'.format(mitsid=mits_id)])
 # Column 1 Information
 def col1(): 
     return html.Div(

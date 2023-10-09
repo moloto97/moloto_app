@@ -1,6 +1,4 @@
 from dash import Dash, html, dcc, callback, Output, Input
-# import dash_bootstrap_components as dbc
-# import dash_bootstrap_components as dbc
 import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
@@ -66,6 +64,6 @@ app.layout = html.Div(
 
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(debug=False)
     # app.run_server(debug=True, use_reloader=False)
 
